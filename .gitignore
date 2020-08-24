@@ -1,0 +1,4 @@
+.vscode/
+__pycache__/
+bash.exe.stackdump
+chromedriver.exe
