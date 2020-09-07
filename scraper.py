@@ -15,7 +15,7 @@ class Scraper:
 
     def make_web_driver(self, url, driver_dir):
         chrome_options = webdriver.ChromeOptions()
-        # chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--headless')
         chrome_options.add_argument('--ignore-certificate-errors')
         chrome_options.add_argument("--enable-javascript")
         driver = webdriver.Chrome(
