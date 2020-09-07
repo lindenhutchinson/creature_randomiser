@@ -1,7 +1,6 @@
 from creatures import Master
 import easygui
 import sys
-import enum
 
 
 

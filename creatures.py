@@ -28,7 +28,8 @@ class Master:
 
     def get_random_creatures(self, num, cr, ctype):
         possible = self.get_possible_creatures(cr, ctype)
-
+        if not possible:
+            return
         creatures = {}
 
         for _ in range(0, num):

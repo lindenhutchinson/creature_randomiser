@@ -14,8 +14,9 @@ def get_creatures_from_csv(dir):
 
     return c_list
 
+# used to generate the creatures csv file by scraping a site. 
+# You will need a selenium chromedriver.exe to use this
 def create_creatures_csv(dir):
-
     s = Scraper('https://www.jsigvard.com/dnd/Monsters.html', './chromedriver')
     s.click_on_xpath('/html/body/div[1]/div/div[2]/div/table/thead/tr/th[5]')
     table = s.get_text_by_class('table')
