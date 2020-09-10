@@ -44,6 +44,9 @@ class Master:
     def get_random_creatures_string(self, num, cr, ctype):
         creatures = self.get_random_creatures(num, cr, ctype)
         msg = ''
+        if not creatures:
+            return 'No valid creatures found'
+            
         for creature, num in creatures.items():
             msg += f"{num} x {creature}\n"
 
