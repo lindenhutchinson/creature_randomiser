@@ -11,9 +11,9 @@ These use the scraper class and will require a chromedriver to be installed, eit
 
 When you have a creatures.csv and a directory full of images, you are ready to start the gui:
 
-master = Master(get_creatures_from_csv('./data/creatures.csv'))
-main = Tk()
-main.geometry("1500x1000")
-c = CreatureGui(main, master, 'image_dir')
-main.mainloop()
+    master = Master(get_creatures_from_csv('./data/creatures.csv'))
+    main = Tk()
+    main.geometry("1500x1000")
+    c = CreatureGui(main, master, 'image_dir')
+    main.mainloop()
 
