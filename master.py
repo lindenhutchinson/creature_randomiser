@@ -60,13 +60,14 @@ class Master:
         creatures = {}
 
         for _ in range(0, num):
-            rando = random.choice(possible).to_print()
+            rando = random.choice(possible).name
             if rando in creatures.keys():
                 creatures[rando]+=1
             else:
                 creatures.update({rando:1})
 
         return creatures
+
 
     def get_random_creatures_string(self, num, cr, ctype):
         creatures = self.get_random_creatures(num, cr, ctype)
