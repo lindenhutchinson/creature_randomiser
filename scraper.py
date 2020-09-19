@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 import sys
+from PIL import Image  
 
 
 SLEEP_TIME = 2
@@ -79,3 +80,26 @@ class Scraper:
     def click_on_xpath(self, xpath):
         ele = self.try_get_ele_by_xpath(xpath)
         ele.click()
+
+    def take_screen_shot_by_class_name(self, cname, save_dir):
+        self.driver.save_screenshot(save_dir)
+        # identifying the element to capture the screenshot
+        ele = self.try_get_ele_by_class_name(cname)
+        # to get the element location
+        location = ele.location
+        # to get the dimension the element
+        size = ele.size
+        #to get the x axis
+        x = location['x']
+        #to get the y axis
+        y = location['y']
+        # to get the length the element
+        height = location['y']+size['height']
+        # to get the width the element
+        width = location['x']+size['width']
+        # to open the captured image
+        imgOpen = Image.open(save_dir)
+        # imgOpen = imgOpen.rotate(180)
+        # to crop the captured image to size of that element
+        imgOpen = imgOpen.crop((int(x), int(y), int(width), int(height)))
+        imgOpen.save(save_dir)
