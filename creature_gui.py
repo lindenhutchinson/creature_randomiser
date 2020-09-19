@@ -17,23 +17,37 @@ class CreatureGui:
         self.creature_buttons = []
         self.creature_choice =StringVar()
 
-        self.get_random_button = Button(self.main, text="Randomize", command=self.get_random_creatures, width=20)
-        self.info_label = Label(self.main, anchor=N, textvariable=self.creature_info, font=(FONT, 12))
         self.creature_label = Label(self.main)
 
         self.num_input = ttk.Spinbox(self.main, textvariable=self.num_choice, from_=0, to=8, width=20)
+
+        self.get_random_button = Button(self.main, text="Randomize", command=self.get_random_creatures, width=43)
+        self.info_label = Label(self.main, textvariable=self.creature_info, font=(FONT, 12))
+        
+        self.num_input = ttk.Combobox(self.main, textvariable=self.num_choice, width=20, values=[i for i in range(1, 9)])
         self.cr_input = ttk.Combobox(self.main, textvariable=self.cr_choice, width=20, values=self.master.get_all_cr())
         self.type_input = ttk.Combobox(self.main, textvariable=self.type_choice, width=20, values=self.master.get_all_type())
         self.cr_input.current(0)
         self.type_input.current(0)
 
-        self.creature_label.place(x=450, y=60)
-        self.info_label.place(x=200, y=10)
+        self.creature_label.place(x=375, y=60)
+        self.info_label.place(x=375, y=20)
 
-        self.num_input.place(x=10, y=60)
-        self.get_random_button.place(x=10, y=100)
-        self.cr_input.place(x=10, y=140)
-        self.type_input.place(x=10, y=180)
+
+        num_label = Label(self.main, text = "The number of creatures :",font = (FONT, 10))
+        cr_label = Label(self.main, text = "The CR :",font = (FONT, 10))
+        type_label = Label(self.main, text = "The Type :",font = (FONT, 10))
+
+        self.get_random_button.place(x=25, y=20)
+
+        self.num_input.place(x=190, y=50)
+        num_label.place(x=25, y=50)
+
+        self.cr_input.place(x=190, y=75)
+        cr_label.place(x=25, y=75)
+
+        self.type_input.place(x=190, y=100)
+        type_label.place(x=25, y=100)
 
     def get_creature_image(self, creature_name):
         img = f"{self.image_dir}/{creature_name}.png"
@@ -57,11 +71,11 @@ class CreatureGui:
         random_creatures = self.master.get_random_creatures(num,cr,ctype)
     
         if random_creatures:
-            x=200
-            y=60
+            x=20
+            y=150
             
             for name, num in random_creatures.items():
-                btn = Button(self.main, text=f"{num} x {name}", width=30, command=partial(self.get_creature_image, name))
+                btn = Button(self.main, text=f"{num} x {name}", width=43, command=partial(self.get_creature_image, name))
                 btn.place(x=x, y=y)
                 y+=40
                 self.creature_buttons.append(btn)

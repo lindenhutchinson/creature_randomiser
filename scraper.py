@@ -17,8 +17,8 @@ class Scraper:
     def make_web_driver(self, url, driver_dir):
         chrome_options = webdriver.ChromeOptions()
         # chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--start-maximized');
-        chrome_options.add_argument('--start-fullscreen');
+        chrome_options.add_argument('--start-maximized')
+        chrome_options.add_argument('--start-fullscreen')
         chrome_options.add_argument('--ignore-certificate-errors')
         chrome_options.add_argument("--enable-javascript")
         driver = webdriver.Chrome(
@@ -94,9 +94,9 @@ class Scraper:
         #to get the y axis
         y = location['y']
         # to get the length the element
-        height = location['y']+size['height']
+        height = location['x']+size['height']
         # to get the width the element
-        width = location['x']+size['width']
+        width = location['y']+size['width']+10
         # to open the captured image
         imgOpen = Image.open(save_dir)
         # imgOpen = imgOpen.rotate(180)
