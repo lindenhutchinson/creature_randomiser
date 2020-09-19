@@ -1,9 +1,19 @@
 # Creature Randomizer
 
-Easy enough script to run, just make sure you've installed the libraries from requirements.txt and then run main.py
+This program has two parts
 
-pip install -r ./requirements.txt
+First you will need to scrap some data on creatures. There are two functions for retrieving creature data:
 
-python main.py
+* create_creatures_csv('./data/creatures.csv')
+* take_creature_screenshots('image_dir', './data/creatures.csv')
 
-Should pop open a gui for you, where you can start generating some random creatures.
+These use the scraper class and will require a chromedriver to be installed, either in the directory or on your PATH.
+
+When you have a creatures.csv and a directory full of images, you are ready to start the gui:
+
+master = Master(get_creatures_from_csv('./data/creatures.csv'))
+main = Tk()
+main.geometry("1500x1000")
+c = CreatureGui(main, master, 'image_dir')
+main.mainloop()
+
