@@ -1,19 +1,12 @@
-# Creature Randomizer
+# DnD Creature Randomizer
 
-This program has two parts
+This program can be used to generate a random list of 5e creatures according to type and CR. You can adjust how many random creatures should be generated. I created it so I would have an easier time as a 5e Druid who uses conjuration spells.
 
-First you will need to scrap some data on creatures. There are two functions for retrieving creature data:
+All the data for the program to run is provided in the repo (./data and ./images) so you should be fine to run the main.py file to start the program.
 
-* create_creatures_csv('./data/creatures.csv')
-* take_creature_screenshots('image_dir', './data/creatures.csv')
+Although data is already provided, if you like you can scrape the data again/configure the script a little to scrape from another source. The two functions involved in this process are located in creature_utils.py and are called:
 
-These use the scraper class and will require a chromedriver to be installed, either in the directory or on your PATH.
+* create_creatures_csv('/path/to/csv_file')
+* take_creature_screenshots('directory/to/save/images', '/path/to/csv_file')
 
-When you have a creatures.csv and a directory full of images, you are ready to start the gui:
-
-    master = Master(get_creatures_from_csv('./data/creatures.csv'))
-    main = Tk()
-    main.geometry("1500x1000")
-    c = CreatureGui(main, master, 'image_dir')
-    main.mainloop()
-
+These functions use the Scraper class from scraper.py, which will require a Selenium chromedriver in the root directory.
