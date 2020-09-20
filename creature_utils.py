@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from scraper import Scraper
-from master import Master, Creature
+from creature_master import Master, Creature
 import csv
 
 def get_creatures_from_csv(dir):
@@ -41,7 +41,7 @@ def create_creatures_csv(dir):
     creatures = get_creatures(BeautifulSoup(table, "lxml"))
     write_to_file(dir, creatures)
 
-def take_creature_screenshots(save_dir, path_to_csv):
+def take_creature_screenshots(image_dir, path_to_csv):
     s = Scraper('https://www.jsigvard.com/dnd/Monsters.html', './chromedriver')
 
     master = Master(get_creatures_from_csv(path_to_csv))
@@ -53,6 +53,6 @@ def take_creature_screenshots(save_dir, path_to_csv):
     for name, url in creature_urls.items():
         count+=1
         s.driver.get(url)
-        s.take_screen_shot_by_class_name("container", f"{save_dir}/{name}.png")
+        s.take_screen_shot_by_class_name("container", f"{image_dir}/{name}.png")
         
 

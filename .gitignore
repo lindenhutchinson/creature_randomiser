@@ -3,5 +3,3 @@ __pycache__/
 bash.exe.stackdump
 chromedriver.exe
 venv
-images
-new_images

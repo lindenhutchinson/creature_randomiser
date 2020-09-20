@@ -1,5 +1,4 @@
 import random
-import csv
 
 class Creature:
     def __init__(self, name, cr, href, ctype):
